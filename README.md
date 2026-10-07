@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Local Business One-Page Site Template
 
-## Getting Started
+Next.js (App Router) + TypeScript, no UI libraries. A new client site is mostly editing **one file**.
 
-First, run the development server:
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Make a site for a new client (about 3 hours)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. Copy this folder (or use it as a GitHub template repo).
+2. Edit `content/site.config.ts`: name, WhatsApp number, hours, services, colors, address, Maps link.
+3. Replace the images in `public/images/` (keep the file names, or update the list in the config).
+   For WhatsApp link previews, add a 1200x630 `.jpg` and point `openGraph.images` in `app/layout.tsx` to it.
+4. Set `url` in the config to the client's domain.
+5. `npm run build` to check, then push to GitHub and import into Vercel (free tier).
+6. Add the client's domain in Vercel > Settings > Domains.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Arabic version
 
-## Learn More
+In `content/site.config.ts` set `lang: "ar"` and `dir: "rtl"`, then translate the text. Spacing, borders and the floating button use logical CSS properties, so they flip automatically.
 
-To learn more about Next.js, take a look at the following resources:
+## Change the look
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Colors come from `site.colors` and are applied as CSS variables. Fonts are set in `app/layout.tsx` (swap the two `next/font/google` imports). Layout CSS is in `app/globals.css`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## What's included
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Sticky header with WhatsApp button, hero with a live "Open now / Closed" badge (uses Bahrain time), services price list, gallery, testimonials (hidden if empty), opening hours with a Google Maps link, contact section, floating WhatsApp button, SEO metadata, and LocalBusiness structured data.
