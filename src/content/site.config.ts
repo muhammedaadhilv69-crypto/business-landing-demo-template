@@ -1,67 +1,33 @@
-// EVERYTHING client-specific lives here. Edit this file + swap images in /public/images.
-//
-// Nothing in src/components may hardcode a word, label or link. If you find
-// yourself typing copy into a component, put it in `copy` below instead.
+// EVERYTHING client-specific lives in this file. Edit it, then swap images in /public/images.
+// Part 1: things that are the same in every language.
+// Part 2: the text, once per language (English + Arabic).
+
+import type { Locale } from "@/lib/i18n";
+
+type Day = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun";
 
 export const site = {
-  // --- Language / direction (set lang "ar" and dir "rtl" for Arabic sites) ---
-  lang: "en",
-  dir: "ltr" as "ltr" | "rtl",
-
-  // --- Business basics ---
-  name: "Al Fanar Barbers",
-  tagline: "Classic cuts and hot-towel shaves in the heart of Manama.",
-  description:
-    "Al Fanar Barbers in Manama, Bahrain. Haircuts, beard trims and hot-towel shaves. Book on WhatsApp.",
-  url: "https://example.com", // the client's final domain (used for SEO / sharing previews)
+  url: "https://example.com", // the client's final domain (used for SEO and link previews)
   timezone: "Asia/Bahrain",
 
-  // --- Contact ---
   whatsapp: "97300000000", // digits only, with country code, no + or spaces
-  whatsappMessage: "Hi! I'd like to book an appointment.",
   phone: "+973 0000 0000",
-  address: "Building 0, Road 0, Block 0, Manama, Bahrain",
   mapsUrl: "https://maps.google.com/?q=Manama+Bahrain",
   instagram: "https://instagram.com/yourclient", // "" to hide
 
-  // --- Button text ---
-  cta: "Book on WhatsApp",
-
-  // --- Brand colors (any hex) ---
+  // Brand colors (any hex)
   colors: {
-    primary: "#0F3D3E", // hero + footer background
-    accent: "#C8963E", // buttons + highlights
+    primary: "#0F3D3E", // hero, header, footer background
+    accent: "#C8963E", // main buttons
     ink: "#1B1F1E", // body text
     paper: "#F4F6F5", // page background
-    mist: "#DDE5E2", // borders + soft panels
+    mist: "#DDE5E2", // borders and soft panels
   },
 
-  // --- Services (price is free text: "BD 3", "From BD 5", or "" to hide) ---
-  services: [
-    { title: "Classic haircut", description: "Scissor or clipper cut, finished with a hot-towel neck wipe.", price: "BD 4" },
-    { title: "Beard trim and shape", description: "Defined lines, balanced length, and a clean fade into the cheeks.", price: "BD 3" },
-    { title: "Hot-towel shave", description: "Straight-razor shave with warm towels and aftershave balm.", price: "BD 5" },
-    { title: "Kids' cut", description: "Under 12. Patient barbers and a calm chair.", price: "BD 3" },
-    { title: "Haircut and beard", description: "The full routine in one visit.", price: "BD 6" },
-  ],
+  // Gallery photos: drop files in /public/images and list them here (alt text is in the language sections below)
+  gallery: ["/images/1.svg", "/images/2.svg", "/images/3.svg", "/images/4.svg", "/images/5.svg", "/images/6.svg"],
 
-  // --- Gallery: put photos in /public/images and list them here ---
-  gallery: [
-    { src: "/images/1.svg", alt: "Fresh fade haircut" },
-    { src: "/images/2.svg", alt: "Beard shaping" },
-    { src: "/images/3.svg", alt: "Hot-towel shave" },
-    { src: "/images/4.svg", alt: "Shop interior" },
-    { src: "/images/5.svg", alt: "Barber chair" },
-    { src: "/images/6.svg", alt: "Finished classic cut" },
-  ],
-
-  // --- Testimonials ("[]" hides the section) ---
-  testimonials: [
-    { quote: "Best fade I've had in Bahrain. I booked on WhatsApp and was in the chair in ten minutes.", name: "Hamad A." },
-    { quote: "Clean shop, on time, and they actually listen to what you ask for.", name: "Yousif K." },
-  ],
-
-  // --- Opening hours (open: null = closed that day, 24h format) ---
+  // Opening hours, 24h format. open: null = closed that day. Day order here is the display order.
   hours: [
     { day: "Sat", open: "10:00", close: "23:00" },
     { day: "Sun", open: "10:00", close: "23:00" },
@@ -70,111 +36,122 @@ export const site = {
     { day: "Wed", open: "10:00", close: "23:00" },
     { day: "Thu", open: "10:00", close: "23:30" },
     { day: "Fri", open: "16:00", close: "23:30" },
-  ] as { day: "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun"; open: string | null; close: string | null }[],
+  ] as { day: Day; open: string | null; close: string | null }[],
+};
 
-  // ==================================================================
-  // COPY — every visible word on the page, so a client can rebrand the
-  // whole site without opening a component. Delete a key you do not need
-  // and the section hides itself.
-  // ==================================================================
-  copy: {
-    /** Header navigation labels. The hrefs match section ids. */
-    nav: {
-      sections: "Sections", // aria-label for both navs
-      services: "Services",
-      gallery: "Gallery",
-      testimonials: "Reviews",
-      hours: "Hours",
-      contact: "Contact",
-    },
+export type Copy = {
+  name: string;
+  tagline: string;
+  description: string;
+  address: string;
+  cta: string;
+  call: string;
+  instagram: string;
+  whatsappMessage: string;
+  switchLabel: string; // label of the button that switches to the OTHER language
+  mapsLabel: string;
+  sections: {
+    services: string;
+    gallery: string;
+    testimonials: string;
+    hours: string;
+    findUs: string;
+    contact: string;
+    contactText: string;
+  };
+  status: { open: string; opensToday: string; closedToday: string; closedNow: string }; // {time} is replaced
+  time: { am: string; pm: string; to: string; closed: string };
+  days: Record<Day, string>;
+  services: { title: string; description: string; price: string }[]; // price "" hides it
+  galleryAlts: string[];
+  testimonials: { quote: string; name: string }[]; // [] hides the section
+};
 
-    buttons: {
-      directions: "Directions", // header, shown on sm and up
-      maps: "Open in Google Maps", // hero + hours
-      call: "Call", // prefixed to the phone number, e.g. "Call +973 0000 0000"
-      whatsappCta: "Book on WhatsApp", // hero + contact primary
-      instagram: "Instagram",
-    },
-
-    hero: {
-      visitUs: "Visit us", // trade-card heading
-      openLabel: "Open", // trade-card hours row
-      phoneLabel: "Phone",
-    },
-
-    services: {
-      eyebrow: "Price board",
-      /** `titleAccent` renders in a muted colour after the title. "" to drop it. */
-      title: "Services",
-      titleAccent: "and prices",
-      intro:
-        "Every price below is the full cost — no consultation fee, no surprise add-ons at the chair.",
-    },
-
-    gallery: {
-      eyebrow: "Portfolio",
-      title: "Recent work",
-      intro: "Straight from the chair. Hover any shot for the full description.",
-    },
-
-    testimonials: {
-      eyebrow: "Word of mouth",
-      title: "What customers say",
-    },
-
-    hours: {
-      eyebrow: "Plan your visit",
-      title: "Opening hours",
-      caption: "Weekly opening hours", // screen-reader caption for the table
-      arrivalsEyebrow: "Arrivals",
-      arrivalsTitle: "Find us",
-      phoneLabel: "Phone",
-      instagramLabel: "Instagram",
-    },
-
-    contact: {
-      eyebrow: "Book a chair",
-      title: "Ready for a fresh cut?",
-      body: "Send us a message with the day and time that suits you. We reply on WhatsApp.",
-    },
-
-    footer: {
-      sectionsLabel: "Sections",
-      hoursLabel: "Hours",
-      rights: "All rights reserved.",
-      phoneLabel: "Phone",
-      instagramLabel: "Instagram",
-    },
+const en: Copy = {
+  name: "Al Fanar Barbers",
+  tagline: "Classic cuts and hot-towel shaves in the heart of Manama.",
+  description: "Al Fanar Barbers in Manama, Bahrain. Haircuts, beard trims and hot-towel shaves. Book on WhatsApp.",
+  address: "Building 0, Road 0, Block 0, Manama, Bahrain",
+  cta: "Book on WhatsApp",
+  call: "Call",
+  instagram: "Instagram",
+  whatsappMessage: "Hi! I'd like to book an appointment.",
+  switchLabel: "العربية",
+  mapsLabel: "Open in Google Maps",
+  sections: {
+    services: "Services and prices",
+    gallery: "Recent work",
+    testimonials: "What customers say",
+    hours: "Opening hours",
+    findUs: "Find us",
+    contact: "Ready for a fresh cut?",
+    contactText: "Send us a message with the day and time that suits you. We reply on WhatsApp.",
   },
+  status: {
+    open: "Open now, closes at {time}",
+    opensToday: "Closed, opens today at {time}",
+    closedToday: "Closed today",
+    closedNow: "Closed for today",
+  },
+  time: { am: "AM", pm: "PM", to: "to", closed: "Closed" },
+  days: { Sat: "Saturday", Sun: "Sunday", Mon: "Monday", Tue: "Tuesday", Wed: "Wednesday", Thu: "Thursday", Fri: "Friday" },
+  services: [
+    { title: "Classic haircut", description: "Scissor or clipper cut, finished with a hot-towel neck wipe.", price: "BD 4" },
+    { title: "Beard trim and shape", description: "Defined lines, balanced length, and a clean fade into the cheeks.", price: "BD 3" },
+    { title: "Hot-towel shave", description: "Straight-razor shave with warm towels and aftershave balm.", price: "BD 5" },
+    { title: "Kids' cut", description: "Under 12. Patient barbers and a calm chair.", price: "BD 3" },
+    { title: "Haircut and beard", description: "The full routine in one visit.", price: "BD 6" },
+  ],
+  galleryAlts: ["Fresh fade haircut", "Beard shaping", "Hot-towel shave", "Shop interior", "Barber chair", "Finished classic cut"],
+  testimonials: [
+    { quote: "Best fade I've had in Bahrain. I booked on WhatsApp and was in the chair in ten minutes.", name: "Hamad A." },
+    { quote: "Clean shop, on time, and they actually listen to what you ask for.", name: "Yousif K." },
+  ],
 };
 
-export type Site = typeof site;
+const ar: Copy = {
+  name: "صالون الفنار للحلاقة",
+  tagline: "قصّات كلاسيكية وحلاقة بالمنشفة الساخنة في قلب المنامة.",
+  description: "صالون الفنار للحلاقة في المنامة، البحرين. قصّات شعر وتشذيب لحية وحلاقة بالمنشفة الساخنة. احجز عبر واتساب.",
+  address: "مبنى 0، طريق 0، مجمّع 0، المنامة، البحرين",
+  cta: "احجز عبر واتساب",
+  call: "اتصل",
+  instagram: "إنستغرام",
+  whatsappMessage: "مرحباً! أرغب بحجز موعد.",
+  switchLabel: "English",
+  mapsLabel: "افتح في خرائط Google",
+  sections: {
+    services: "الخدمات والأسعار",
+    gallery: "أحدث أعمالنا",
+    testimonials: "آراء عملائنا",
+    hours: "ساعات العمل",
+    findUs: "موقعنا",
+    contact: "جاهز لقصّة جديدة؟",
+    contactText: "أرسل لنا اليوم والوقت المناسبين لك، ونردّ عليك عبر واتساب.",
+  },
+  status: {
+    open: "مفتوح الآن، نغلق الساعة {time}",
+    opensToday: "مغلق الآن، نفتح اليوم الساعة {time}",
+    closedToday: "مغلق اليوم",
+    closedNow: "أغلقنا لهذا اليوم",
+  },
+  time: { am: "ص", pm: "م", to: "إلى", closed: "مغلق" },
+  days: { Sat: "السبت", Sun: "الأحد", Mon: "الاثنين", Tue: "الثلاثاء", Wed: "الأربعاء", Thu: "الخميس", Fri: "الجمعة" },
+  services: [
+    { title: "قصّة شعر كلاسيكية", description: "قصّ بالمقص أو الماكينة مع مسح الرقبة بالمنشفة الساخنة.", price: "4 د.ب" },
+    { title: "تحديد وتشذيب اللحية", description: "خطوط واضحة وطول متوازن مع تدرّج ناعم عند الخدّين.", price: "3 د.ب" },
+    { title: "حلاقة بالمنشفة الساخنة", description: "حلاقة بالموسى مع مناشف دافئة ومرطّب بعد الحلاقة.", price: "5 د.ب" },
+    { title: "قصّة أطفال", description: "لمن هم دون 12 سنة. حلّاقون صبورون وكرسي هادئ.", price: "3 د.ب" },
+    { title: "قصّة شعر مع اللحية", description: "الروتين الكامل في زيارة واحدة.", price: "6 د.ب" },
+  ],
+  galleryAlts: ["قصّة تدريج جديدة", "تشكيل اللحية", "حلاقة بالمنشفة الساخنة", "داخل الصالون", "كرسي الحلاقة", "قصّة كلاسيكية جاهزة"],
+  testimonials: [
+    { quote: "أفضل تدريج حصلت عليه في البحرين. حجزت عبر واتساب وجلست على الكرسي خلال عشر دقائق.", name: "حمد ع." },
+    { quote: "الصالون نظيف، والالتزام بالموعد، وهم يسمعون طلبك فعلاً.", name: "يوسف ك." },
+  ],
+};
 
-export const whatsappLink = (message: string = site.whatsappMessage) =>
-  `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
+export const copy: Record<Locale, Copy> = { en, ar };
 
+export const whatsappLink = (t: Copy) => `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(t.whatsappMessage)}`;
 export const telLink = `tel:${site.phone.replace(/[^\d+]/g, "")}`;
-
-/**
- * Handle pulled from the Instagram URL, e.g. "@yourclient".
- * Empty when instagram is "", so callers can hide the row entirely.
- */
-export const instagramHandle = site.instagram
-  ? "@" + (site.instagram.split("/").filter(Boolean).pop() ?? "").replace(/^@/, "")
-  : "";
-
-/**
- * Earliest opening to latest closing across the whole week, for one-line
- * summaries in the hero, contact band and footer. Returns "" when every day
- * is marked closed, so callers can omit the row.
- *
- * Times are zero-padded 24h strings, so a plain string compare orders them.
- */
-export const hoursSpan = () => {
-  const opens = site.hours.map((h) => h.open).filter((t): t is string => !!t);
-  const closes = site.hours.map((h) => h.close).filter((t): t is string => !!t);
-  if (!opens.length || !closes.length) return "";
-  const earliest = opens.reduce((a, b) => (a < b ? a : b));
-  const latest = closes.reduce((a, b) => (a > b ? a : b));
-  return `${earliest} – ${latest}`;
-};
