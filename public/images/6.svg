@@ -1,1 +1,45 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600"><rect width="600" height="600" fill="#4A5B58"/><g stroke="#ffffff" stroke-opacity=".18" stroke-width="2"><path d="M0 120h600M0 240h600M0 360h600M0 480h600"/></g><text x="300" y="310" font-family="sans-serif" font-size="28" fill="#fff" fill-opacity=".7" text-anchor="middle">Replace with photo 6</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-label="Finished classic cut — placeholder">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B2E2F"/>
+      <stop offset="0.55" stop-color="#0F3D3E"/>
+      <stop offset="1" stop-color="#0B2E2F"/>
+    </linearGradient>
+    <radialGradient id="v" cx="0.5" cy="0.42" r="0.78">
+      <stop offset="0.55" stop-color="#0F3D3E" stop-opacity="0"/>
+      <stop offset="1" stop-color="#1B1F1E" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="bloom" cx="0.5" cy="0.4" r="0.55">
+      <stop offset="0" stop-color="#C8963E" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#C8963E" stop-opacity="0"/>
+    </radialGradient>
+    <clipPath id="c"><rect width="1200" height="1200"/></clipPath>
+  </defs>
+
+  <g clip-path="url(#c)">
+    <rect width="1200" height="1200" fill="url(#g)"/>
+    <rect width="1200" height="1200" fill="url(#bloom)"/>
+    <g transform="rotate(34 600 600)"><line x1="-1400" y1="-200" x2="-1400" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1352" y1="-200" x2="-1352" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1304" y1="-200" x2="-1304" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1256" y1="-200" x2="-1256" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1208" y1="-200" x2="-1208" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1160" y1="-200" x2="-1160" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1112" y1="-200" x2="-1112" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1064" y1="-200" x2="-1064" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-1016" y1="-200" x2="-1016" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-968" y1="-200" x2="-968" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-920" y1="-200" x2="-920" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-872" y1="-200" x2="-872" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-824" y1="-200" x2="-824" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-776" y1="-200" x2="-776" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-728" y1="-200" x2="-728" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-680" y1="-200" x2="-680" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-632" y1="-200" x2="-632" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-584" y1="-200" x2="-584" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-536" y1="-200" x2="-536" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-488" y1="-200" x2="-488" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-440" y1="-200" x2="-440" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-392" y1="-200" x2="-392" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-344" y1="-200" x2="-344" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-296" y1="-200" x2="-296" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-248" y1="-200" x2="-248" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-200" y1="-200" x2="-200" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-152" y1="-200" x2="-152" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-104" y1="-200" x2="-104" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-56" y1="-200" x2="-56" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="-8" y1="-200" x2="-8" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="40" y1="-200" x2="40" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="88" y1="-200" x2="88" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="136" y1="-200" x2="136" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="184" y1="-200" x2="184" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="232" y1="-200" x2="232" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="280" y1="-200" x2="280" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="328" y1="-200" x2="328" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="376" y1="-200" x2="376" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="424" y1="-200" x2="424" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="472" y1="-200" x2="472" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="520" y1="-200" x2="520" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="568" y1="-200" x2="568" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="616" y1="-200" x2="616" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="664" y1="-200" x2="664" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="712" y1="-200" x2="712" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="760" y1="-200" x2="760" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="808" y1="-200" x2="808" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="856" y1="-200" x2="856" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="904" y1="-200" x2="904" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="952" y1="-200" x2="952" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1000" y1="-200" x2="1000" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1048" y1="-200" x2="1048" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1096" y1="-200" x2="1096" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1144" y1="-200" x2="1144" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1192" y1="-200" x2="1192" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1240" y1="-200" x2="1240" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1288" y1="-200" x2="1288" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1336" y1="-200" x2="1336" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/><line x1="1384" y1="-200" x2="1384" y2="1400" stroke="#DBBA80" stroke-opacity="0.23" stroke-width="1.5"/></g>
+
+    <!-- Motif: concentric rings, echoing the header mark. -->
+    <circle cx="600" cy="480" r="360" fill="none" stroke="#C8963E" stroke-opacity="0.32" stroke-width="2"/>
+    <circle cx="600" cy="480" r="223.2" fill="none" stroke="#DBBA80" stroke-opacity="0.24" stroke-width="1.5"/>
+    <circle cx="600" cy="480" r="86.39999999999999" fill="#C8963E" fill-opacity="0.16"/>
+    <circle cx="600" cy="480" r="25.200000000000003" fill="#DBBA80" fill-opacity="0.75"/>
+
+    <rect width="1200" height="1200" fill="url(#v)"/>
+
+    <!-- Warm haze under the motif: stops the tile reading as flat green. -->
+    <ellipse cx="600" cy="480" rx="792.0000000000001" ry="792.0000000000001"
+             fill="#C8963E" opacity="0.06"/>
+
+    <!-- Inset brass frame. -->
+    <rect x="46" y="46" width="1108" height="1108" fill="none" stroke="#C8963E" stroke-opacity="0.26" stroke-width="2"/>
+
+    <!-- Caption block, bottom-left. -->
+    <g font-family="Georgia, 'Times New Roman', serif">
+      <text x="92" y="1024" fill="#DBBA80" fill-opacity="0.95" font-size="34" letter-spacing="3">FINISHED CLASSIC CUT</text>
+      <text x="92" y="1070" fill="#C8963E" fill-opacity="0.62" font-family="Helvetica, Arial, sans-serif" font-size="21" letter-spacing="5.5">REPLACE WITH PHOTO 6</text>
+    </g>
+  </g>
+</svg>

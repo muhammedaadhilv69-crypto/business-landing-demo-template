@@ -1,4 +1,7 @@
 // EVERYTHING client-specific lives here. Edit this file + swap images in /public/images.
+//
+// Nothing in src/components may hardcode a word, label or link. If you find
+// yourself typing copy into a component, put it in `copy` below instead.
 
 export const site = {
   // --- Language / direction (set lang "ar" and dir "rtl" for Arabic sites) ---
@@ -68,6 +71,81 @@ export const site = {
     { day: "Thu", open: "10:00", close: "23:30" },
     { day: "Fri", open: "16:00", close: "23:30" },
   ] as { day: "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun"; open: string | null; close: string | null }[],
+
+  // ==================================================================
+  // COPY — every visible word on the page, so a client can rebrand the
+  // whole site without opening a component. Delete a key you do not need
+  // and the section hides itself.
+  // ==================================================================
+  copy: {
+    /** Header navigation labels. The hrefs match section ids. */
+    nav: {
+      sections: "Sections", // aria-label for both navs
+      services: "Services",
+      gallery: "Gallery",
+      testimonials: "Reviews",
+      hours: "Hours",
+      contact: "Contact",
+    },
+
+    buttons: {
+      directions: "Directions", // header, shown on sm and up
+      maps: "Open in Google Maps", // hero + hours
+      call: "Call", // prefixed to the phone number, e.g. "Call +973 0000 0000"
+      whatsappCta: "Book on WhatsApp", // hero + contact primary
+      instagram: "Instagram",
+    },
+
+    hero: {
+      visitUs: "Visit us", // trade-card heading
+      openLabel: "Open", // trade-card hours row
+      phoneLabel: "Phone",
+    },
+
+    services: {
+      eyebrow: "Price board",
+      /** `titleAccent` renders in a muted colour after the title. "" to drop it. */
+      title: "Services",
+      titleAccent: "and prices",
+      intro:
+        "Every price below is the full cost — no consultation fee, no surprise add-ons at the chair.",
+    },
+
+    gallery: {
+      eyebrow: "Portfolio",
+      title: "Recent work",
+      intro: "Straight from the chair. Hover any shot for the full description.",
+    },
+
+    testimonials: {
+      eyebrow: "Word of mouth",
+      title: "What customers say",
+    },
+
+    hours: {
+      eyebrow: "Plan your visit",
+      title: "Opening hours",
+      caption: "Weekly opening hours", // screen-reader caption for the table
+      arrivalsEyebrow: "Arrivals",
+      arrivalsTitle: "Find us",
+      phoneLabel: "Phone",
+      instagramLabel: "Instagram",
+    },
+
+    contact: {
+      eyebrow: "Book a chair",
+      title: "Ready for a fresh cut?",
+      body: "Send us a message with the day and time that suits you. We reply on WhatsApp.",
+    },
+
+    footer: {
+      sectionsLabel: "Sections",
+      hoursLabel: "Hours",
+      rights: "All rights reserved.",
+      phoneLabel: "Phone",
+      instagramLabel: "Instagram",
+    },
+  },
 };
 
 export type Site = typeof site;
@@ -76,3 +154,27 @@ export const whatsappLink = (message: string = site.whatsappMessage) =>
   `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 
 export const telLink = `tel:${site.phone.replace(/[^\d+]/g, "")}`;
+
+/**
+ * Handle pulled from the Instagram URL, e.g. "@yourclient".
+ * Empty when instagram is "", so callers can hide the row entirely.
+ */
+export const instagramHandle = site.instagram
+  ? "@" + (site.instagram.split("/").filter(Boolean).pop() ?? "").replace(/^@/, "")
+  : "";
+
+/**
+ * Earliest opening to latest closing across the whole week, for one-line
+ * summaries in the hero, contact band and footer. Returns "" when every day
+ * is marked closed, so callers can omit the row.
+ *
+ * Times are zero-padded 24h strings, so a plain string compare orders them.
+ */
+export const hoursSpan = () => {
+  const opens = site.hours.map((h) => h.open).filter((t): t is string => !!t);
+  const closes = site.hours.map((h) => h.close).filter((t): t is string => !!t);
+  if (!opens.length || !closes.length) return "";
+  const earliest = opens.reduce((a, b) => (a < b ? a : b));
+  const latest = closes.reduce((a, b) => (a > b ? a : b));
+  return `${earliest} – ${latest}`;
+};

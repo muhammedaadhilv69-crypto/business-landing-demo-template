@@ -4,176 +4,215 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
-  --color-sidebar-ring: var(--sidebar-ring);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar: var(--sidebar);
-  --color-chart-5: var(--chart-5);
-  --color-chart-4: var(--chart-4);
-  --color-chart-3: var(--chart-3);
-  --color-chart-2: var(--chart-2);
-  --color-chart-1: var(--chart-1);
-  --color-ring: var(--ring);
-  --color-input: var(--input);
-  --color-border: var(--border);
-  --color-destructive: var(--destructive);
-  --color-accent-foreground: var(--accent-foreground);
-  --color-accent: var(--accent);
-  --color-muted-foreground: var(--muted-foreground);
-  --color-muted: var(--muted);
-  --color-secondary-foreground: var(--secondary-foreground);
-  --color-secondary: var(--secondary);
-  --color-primary-foreground: var(--primary-foreground);
-  --color-primary: var(--primary);
-  --color-popover-foreground: var(--popover-foreground);
-  --color-popover: var(--popover);
-  --color-card-foreground: var(--card-foreground);
-  --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
-}
+/* ==================================================================
+   1. DERIVED BRAND VARIABLES
 
-:root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --radius: 0.625rem;
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
-}
+   Single source of truth for every derived colour. Declared on `body`
+   because that is where layout.tsx writes the raw config values
+   (--primary / --accent / --ink / --paper / --mist), so `var(--ink)`
+   resolves here and nowhere above it.
 
-.dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.87 0 0);
-  --chart-2: oklch(0.556 0 0);
-  --chart-3: oklch(0.439 0 0);
-  --chart-4: oklch(0.371 0 0);
-  --chart-5: oklch(0.269 0 0);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
-}
-
+   Both Tailwind utilities (via @theme inline, section 2) and the
+   hand-written rules further down consume THESE, never
+   var(--color-*), which @theme inline never emits as a real property.
+   ================================================================== */
 @layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
   body {
-    @apply bg-background text-foreground;
+    /* Brand ramp, mixed off --primary */
+    --brand: var(--primary);
+    --brand-900: color-mix(in oklab, var(--primary), #000 24%);
+    --brand-800: color-mix(in oklab, var(--primary), #000 13%);
+    --brand-500: color-mix(in oklab, var(--primary), #fff 9%);
+    --brand-300: color-mix(in oklab, var(--primary), #fff 26%);
+    --brand-50: color-mix(in oklab, var(--primary), #fff 87%);
+
+    /* Signal ramp, mixed off --accent. The only accent on the page. */
+    --signal-700: color-mix(in oklab, var(--accent), #000 22%);
+    --signal-300: color-mix(in oklab, var(--accent), #fff 34%);
+    --signal-100: color-mix(in oklab, var(--accent), #fff 74%);
+
+    /* Stock + ink */
+    --stock: color-mix(in oklab, var(--paper), #fff 64%);
+    --ink-2: color-mix(in oklab, var(--ink), transparent 26%);
+    --ink-3: color-mix(in oklab, var(--ink), transparent 47%);
+    --hairline: color-mix(in oklab, var(--ink), transparent 88%);
+    --hairline-strong: color-mix(in oklab, var(--ink), transparent 72%);
+    --on-brand: color-mix(in oklab, var(--primary), #fff 94%);
+    --on-brand-2: color-mix(in oklab, var(--primary), #fff 72%);
   }
+}
+
+/* ==================================================================
+   2. THEME MAPPING
+
+   `inline` substitutes these values into the generated utilities, so a
+   client editing site.config.ts re-skins the whole page at runtime.
+   Names are distinct from the config vars to avoid clobbering them.
+
+   Spacing is deliberately NOT overridden: Tailwind's default scale is
+   already one 0.25rem base unit times multiples. Type and radius are,
+   because those are opinionated choices rather than a neutral scale.
+   ================================================================== */
+@theme inline {
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Type: one ratio (1.333 perfect fourth), fluid, capped at the top. */
+  --text-step--2: clamp(0.72rem, 0.7rem + 0.1vw, 0.78rem);
+  --text-step--1: clamp(0.86rem, 0.83rem + 0.15vw, 0.94rem);
+  --text-step-0: clamp(1rem, 0.97rem + 0.18vw, 1.1rem);
+  --text-step-1: clamp(1.2rem, 1.14rem + 0.3vw, 1.37rem);
+  --text-step-2: clamp(1.44rem, 1.33rem + 0.55vw, 1.78rem);
+  --text-step-3: clamp(1.73rem, 1.55rem + 0.9vw, 2.31rem);
+  --text-step-4: clamp(2.07rem, 1.78rem + 1.45vw, 3rem);
+  --text-step-5: clamp(2.49rem, 2.03rem + 2.3vw, 3.9rem);
+  --text-step-6: clamp(2.99rem, 2.28rem + 3.55vw, 5.07rem);
+  --text-step-7: clamp(3.58rem, 2.52rem + 5.3vw, 6.6rem);
+
+  /* Brand + signal, aliased to the real properties from section 1. */
+  --color-brand: var(--brand);
+  --color-brand-900: var(--brand-900);
+  --color-brand-800: var(--brand-800);
+  --color-brand-500: var(--brand-500);
+  --color-brand-300: var(--brand-300);
+  --color-brand-50: var(--brand-50);
+  --color-signal: var(--accent);
+  --color-signal-700: var(--signal-700);
+  --color-signal-300: var(--signal-300);
+  --color-signal-100: var(--signal-100);
+  --color-signal-50: color-mix(in oklab, var(--accent), #fff 89%);
+
+  /* Stock + ink */
+  --color-paper: var(--paper);
+  --color-stock: var(--stock);
+  --color-mist: var(--mist);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-on-brand: var(--on-brand);
+  --color-on-brand-2: var(--on-brand-2);
+
+  /* shadcn semantics, remapped onto the brand so any shadcn component
+     added later is already on-brand. */
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--on-brand);
+  --color-accent: var(--accent);
+  --color-accent-foreground: color-mix(in oklab, var(--accent), #000 88%);
+  --color-secondary: var(--on-brand);
+  --color-secondary-foreground: var(--ink);
+  --color-muted: color-mix(in oklab, var(--primary), #fff 92%);
+  --color-muted-foreground: var(--ink-3);
+  --color-border: var(--hairline);
+  --color-input: var(--hairline);
+  --color-ring: var(--accent);
+  --color-card: var(--stock);
+  --color-card-foreground: var(--ink);
+  --color-popover: var(--stock);
+  --color-popover-foreground: var(--ink);
+  --color-destructive: oklch(0.577 0.245 27.325);
+
+  /* Radius: commit to crisp. r-full reserved for true circles. */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+
+  /* Two shadows, and only for surfaces that genuinely float. */
+  --shadow-float: 0 2px 6px -1px color-mix(in oklab, var(--ink), transparent 78%),
+    0 12px 28px -8px color-mix(in oklab, var(--ink), transparent 70%);
+  --shadow-lift: 0 1px 2px color-mix(in oklab, var(--ink), transparent 86%);
+
+  /* Motion: three durations, two easings. */
+  --ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* shadcn internals reference this directly. */
+:root {
+  --radius: 0.375rem;
+}
+
+/* ==================================================================
+   3. BASE
+   ================================================================== */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    border-color: var(--hairline);
+
+    /* Tailwind's outline-<n> utilities emit
+       `outline-style: var(--tw-outline-style)`. Tailwind never defines that
+       variable itself, so without this every `focus-visible:outline-2` in the
+       app resolves to `outline-style: none` and cancels the global focus ring.
+       Individual utilities (e.g. outline-hidden) still override it. */
+    --tw-outline-style: solid;
+  }
+
   html {
-    @apply font-sans;
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
-}
 
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-body), ui-sans-serif, system-ui, sans-serif;
+    font-size: var(--text-step-0);
+    line-height: 1.6;
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+  }
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display), Georgia, serif;
+    font-weight: 700;
+    line-height: 1.04;
+    letter-spacing: -0.028em;
+    text-wrap: balance;
+    margin: 0;
+  }
 
-html {
-  scroll-behavior: smooth;
-}
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
 
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font-family: var(--font-body), system-ui, sans-serif;
-  font-size: 1.0625rem;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 
-h1,
-h2,
-h3 {
-  font-family: var(--font-display), system-ui, sans-serif;
-  line-height: 1.1;
-  margin: 0;
-}
+  img {
+    max-width: 100%;
+    display: block;
+  }
 
-p {
-  margin: 0;
-}
+  /* Focus is never removed. The accent ring reads on light grounds;
+     components sitting on the accent itself switch to ink (see the
+     `signal` variant in ui/button.tsx). */
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
 
-a {
-  color: inherit;
-}
-
-img {
-  max-width: 100%;
-  display: block;
-}
-
-:focus-visible {
-  outline: 3px solid var(--accent);
-  outline-offset: 3px;
+  ::selection {
+    background: var(--signal-100);
+    color: var(--signal-700);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -181,301 +220,137 @@ img {
     scroll-behavior: auto;
   }
 
-  * {
-    transition: none !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
+/* ==================================================================
+   4. LAYOUT PRIMITIVES
+
+   These reference the real properties from section 1. Using
+   var(--color-*) here would silently resolve to nothing.
+   ================================================================== */
+
+/* Measure varies by content type; the page is never one centred column. */
 .wrap {
   width: min(100% - 2.5rem, 68rem);
   margin-inline: auto;
 }
 
-/* Header */
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 20;
-  background: var(--primary);
-  color: #fff;
+.wrap-wide {
+  width: min(100% - 2.5rem, 82rem);
+  margin-inline: auto;
 }
 
-.header-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  padding-block: 0.75rem;
+.wrap-narrow {
+  width: min(100% - 2.5rem, 46rem);
+  margin-inline: auto;
 }
 
-.brand {
-  font-family: var(--font-display), sans-serif;
-  font-weight: 700;
-  font-size: 1.15rem;
-  text-decoration: none;
-}
-
-/* Buttons */
-.btn {
-  display: inline-block;
-  padding: 0.9rem 1.5rem;
-  background: var(--accent);
-  color: #111;
-  font-weight: 700;
-  text-decoration: none;
-  border-radius: 0.5rem;
-  border: 2px solid var(--accent);
-  transition: transform 0.15s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn-small {
-  padding: 0.5rem 1rem;
-  font-size: 0.95rem;
-}
-
-.btn-ghost {
-  background: transparent;
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.55);
-}
-
-.btn-outline {
-  background: transparent;
-  color: var(--ink);
-  border-color: var(--ink);
-}
-
-/* Hero */
-.hero {
-  background: var(--primary);
-  color: #fff;
-  padding-block: clamp(3rem, 10vw, 7rem);
-}
-
-.hero-grid {
-  display: grid;
-  gap: 1.5rem;
-  justify-items: start;
-}
-
-.hero-title {
-  font-size: clamp(2.75rem, 11vw, 7rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  max-width: 14ch;
-}
-
-.hero-tagline {
-  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
-  max-width: 36ch;
-  opacity: 0.9;
-}
-
-.hero-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-}
-
-/* Open status */
-.status {
+/* Small tracked label above a section title, preceded by a short rule. */
+.eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 999px;
-  background: rgba(255, 255, 255, 0.12);
-  font-size: 0.95rem;
-  font-weight: 600;
-}
-
-.status-placeholder {
-  min-height: 2.1rem;
-  min-width: 14rem;
-  background: transparent;
-}
-
-.status-dot {
-  width: 0.65rem;
-  height: 0.65rem;
-  border-radius: 50%;
-  background: #9aa5a2;
-}
-
-.is-open .status-dot {
-  background: #4ade80;
-}
-
-.is-closed .status-dot {
-  background: #f87171;
-}
-
-/* Sections */
-.section {
-  padding-block: clamp(2.5rem, 7vw, 5rem);
-}
-
-.section-tint {
-  background: #fff;
-}
-
-.section-title {
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.02em;
-}
-
-/* Price list (reads like a menu board) */
-.price-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  max-width: 44rem;
-}
-
-.price-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  padding-block: 1.1rem;
-  border-bottom: 1px solid var(--mist);
-}
-
-.price-name {
-  font-size: 1.25rem;
-}
-
-.price-desc {
-  opacity: 0.75;
-  max-width: 48ch;
-}
-
-.price-tag {
-  font-family: var(--font-display), sans-serif;
+  gap: 0.6em;
+  font-family: var(--font-body), sans-serif;
+  font-size: var(--text-step--2);
   font-weight: 700;
-  font-size: 1.25rem;
-  white-space: nowrap;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--signal-700);
 }
 
-/* Gallery */
-.gallery {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.55;
 }
 
-.gallery-img {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  border-radius: 0.5rem;
-  background: var(--mist);
+.on-brand .eyebrow {
+  color: var(--signal-300);
 }
 
-@media (min-width: 720px) {
-  .gallery {
-    grid-template-columns: repeat(3, 1fr);
+/* Dotted leader drawing the eye from a price-board label to its figure. */
+.leader {
+  flex: 1 1 auto;
+  align-self: end;
+  min-width: 1.5rem;
+  margin-bottom: 0.45em;
+  border-bottom: 1px dotted var(--hairline-strong);
+}
+
+/* Figures that must align in a column. */
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Hairline that fades at both ends, separating major bands. */
+.rule-fade {
+  height: 1px;
+  border: 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--hairline-strong) 18%,
+    var(--hairline-strong) 82%,
+    transparent
+  );
+}
+
+.on-brand .rule-fade {
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in oklab, #fff, transparent 72%) 18%,
+    color-mix(in oklab, #fff, transparent 72%) 82%,
+    transparent
+  );
+}
+
+/* Keeps anchor targets clear of the sticky header. */
+[id] {
+  scroll-margin-top: 5.5rem;
+}
+
+/* Header reading-progress hairline. Scroll-timeline driven, so it needs no
+   JS and degrades to an invisible line where scroll timelines are absent. */
+.progress-line {
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@supports (animation-timeline: scroll()) {
+  .progress-line {
+    animation: progress-grow linear both;
+    animation-timeline: scroll(root y);
   }
 }
 
-/* Testimonials */
-.quotes {
-  display: grid;
-  gap: 2rem;
-}
-
-.quote {
-  margin: 0;
-  padding-inline-start: 1.25rem;
-  border-inline-start: 4px solid var(--accent);
-  max-width: 40rem;
-}
-
-.quote blockquote {
-  margin: 0 0 0.5rem;
-  font-size: 1.2rem;
-}
-
-.quote figcaption {
-  font-weight: 700;
-}
-
-@media (min-width: 720px) {
-  .quotes {
-    grid-template-columns: 1fr 1fr;
+@keyframes progress-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
   }
 }
 
-/* Hours + map */
-.split {
-  display: grid;
-  gap: 2.5rem;
+/* Clears the floating WhatsApp button so it never covers the last CTA. */
+.footer-pad {
+  padding-bottom: 5.5rem;
 }
 
 @media (min-width: 720px) {
-  .split {
-    grid-template-columns: 1fr 1fr;
+  .footer-pad {
+    padding-bottom: 2.5rem;
   }
-}
-
-.hours {
-  border-collapse: collapse;
-  width: 100%;
-  max-width: 24rem;
-}
-
-.hours th,
-.hours td {
-  text-align: start;
-  padding: 0.55rem 0;
-  border-bottom: 1px solid var(--mist);
-}
-
-.hours th {
-  font-weight: 700;
-  width: 5rem;
-}
-
-.address {
-  margin-bottom: 1.25rem;
-  max-width: 30ch;
-}
-
-/* Contact + footer */
-.contact {
-  background: var(--primary);
-  color: #fff;
-}
-
-.contact-text {
-  margin-bottom: 1.5rem;
-  max-width: 40ch;
-  opacity: 0.9;
-}
-
-.footer {
-  background: #0b2627;
-  color: rgba(255, 255, 255, 0.7);
-  padding-block: 1.5rem;
-  font-size: 0.9rem;
-}
-
-/* Floating WhatsApp button (always visible on mobile) */
-.wa-float {
-  position: fixed;
-  inset-inline-end: 1rem;
-  bottom: 1rem;
-  z-index: 30;
-  width: 3.5rem;
-  height: 3.5rem;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: #25d366;
-  color: #fff;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
 }

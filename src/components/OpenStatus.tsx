@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
 import { site } from "@/content/site.config";
 
 const toMinutes = (t: string) => {
@@ -38,21 +38,73 @@ function getStatus() {
   return { open: false, text: "Closed for today" };
 }
 
+type Status = { open: boolean; text: string };
+
+/**
+ * Wall-clock time is an external store, so it is read through
+ * useSyncExternalStore rather than state plus an effect:
+ *
+ *  - the server snapshot is `null`, so the pill renders as a reserved
+ *    placeholder and there is no hydration mismatch on a time-dependent string
+ *  - one shared interval, created on first subscribe and torn down with the
+ *    last subscriber, instead of an effect per component
+ *  - no setState inside an effect, which is what the lint rule flags
+ */
+
+const listeners = new Set<() => void>();
+let timer: ReturnType<typeof setInterval> | null = null;
+
+function subscribe(onChange: () => void) {
+  listeners.add(onChange);
+  if (!timer) timer = setInterval(() => listeners.forEach((l) => l()), 60_000);
+  return () => {
+    listeners.delete(onChange);
+    if (listeners.size === 0 && timer) {
+      clearInterval(timer);
+      timer = null;
+    }
+  };
+}
+
+const getClientSnapshot = () => getStatus();
+const getServerSnapshot = () => null;
+
 export default function OpenStatus() {
-  const [status, setStatus] = useState<{ open: boolean; text: string } | null>(null);
+  const status = useSyncExternalStore<Status | null>(
+    subscribe,
+    getClientSnapshot,
+    getServerSnapshot,
+  );
 
-  useEffect(() => {
-    setStatus(getStatus());
-    const id = setInterval(() => setStatus(getStatus()), 60_000);
-    return () => clearInterval(id);
-  }, []);
-
-  if (!status) return <div className="status status-placeholder" aria-hidden="true" />;
+  // Reserve the pill's footprint before hydration so the h1 never jumps.
+  if (!status)
+    return (
+      <div
+        className="h-8.5 min-w-56 rounded-full border border-transparent"
+        aria-hidden="true"
+      />
+    );
 
   return (
-    <div className={`status ${status.open ? "is-open" : "is-closed"}`} role="status">
-      <span className="status-dot" aria-hidden="true" />
-      {status.text}
+    <div
+      className={`inline-flex items-center gap-2.5 rounded-full border px-4 py-1.5 text-[0.82rem] font-semibold tracking-[0.01em] ${
+        status.open
+          ? "border-signal/40 bg-signal/12 text-signal"
+          : "border-on-brand/20 bg-on-brand/[0.06] text-on-brand-2"
+      }`}
+      role="status"
+    >
+      <span className="relative flex size-2" aria-hidden="true">
+        {status.open && (
+          <span className="absolute inline-flex size-full animate-ping rounded-full bg-signal opacity-60" />
+        )}
+        <span
+          className={`relative inline-flex size-2 rounded-full ${
+            status.open ? "bg-signal" : "bg-on-brand/45"
+          }`}
+        />
+      </span>
+      <span className="tnum">{status.text}</span>
     </div>
   );
 }
